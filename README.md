@@ -1,5 +1,5 @@
 
-### Dokumentation: Ozean
+Dokumentation: Ozean
 ===
 
 Alle Variablen wurden konsistent mit kleinen Buchstaben gesetzt.
@@ -99,47 +99,7 @@ _studentid_ und _folderid_ sind foreign keys (Fremdschlüssel) aus _student_ und
 _lentat_ gibt den Ausleihzeitpunkt wieder.
 
 _returnedat_ gibt den Rückgabezeitpunkt wieder.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
  
-## Ozean (PHP)
-- [ ] Suche nach Uni-ID's
-- [ ] Bericht schon geschrieben aber noch kein Geld zurück zustand ermöglichen
-- [ ] Eventuell neu schreiben in Flask/Python
-
-### Datenbankmodell
 
 
 
