@@ -68,7 +68,7 @@ __lent__
 In _lent_ sind alle aktuell verliehene Ordner aufgelistet.
 
 Ein Ordner in _lent_ besteht aus folgenden Attributen:
-* id :int, not null
+* id : int, not null
 * studentid : int
 * folderid : int
 * lentat : datetime
@@ -100,10 +100,6 @@ _lentat_ gibt den Ausleihzeitpunkt wieder.
 
 _returnedat_ gibt den Rückgabezeitpunkt wieder.
  
-
-
-
-
 ### wichtige Funktionen
 * suchen nach:
     * Namen (sowohl Vor- als auch Nachname), dabei sollten Rechtschreibfehler, überflüssige Leerzeichen etc. keinen Unterschied machen
