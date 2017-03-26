@@ -1,0 +1,26 @@
+{
+  "name": "ozean",
+  "homepage": "https://github.com/FachschaftMathPhys/ozean",
+  "authors": [
+    "Fachschaft MathPhys"
+  ],
+  "description": "Organ zur Entnahme allerlei nützlicher Ordner",
+  "main": "index.html",
+  "moduleType": [],
+  "license": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.2.1",
+    "EasyAutocomplete": "^1.3.5",
+    "bootstrap": "^3.3.7",
+    "bootstrap-switch": "mewsoft/bootstrap-switch",
+    "bootstrap-select": "^1.12.2"
+  }
+}
