@@ -2,10 +2,18 @@
 Dokumentation: Ozean
 ===
 
+__Inhaltsverzeichnis__
+
+1. __student__
+2. __folder__
+3. __lent__
+4. __returned__
+5. __wichtige Funktionen__
+
 Alle Variablen wurden konsistent mit kleinen Buchstaben gesetzt.
 
 
-__student__
+1. __student__
 
 
 Ein Student _student_ besteht aus folgenden Attributen:
@@ -39,7 +47,7 @@ $\Rightarrow$ Studis bei denen refund == true oder report == true gesetzt ist, d
 Zu verbessern wäre, dass die Datenbankelemente (ohne _comment_) not null sind.
 
 
-__folder__
+2. __folder__
 
 
 Unter _folder_ sind sämtliche Ordner eingetragen.
@@ -62,7 +70,7 @@ Die _obligation_to_report_ beschreibt, ob der _folder_ pfandpflichtig ist.
 Der _barcode_ steht als neues Feature in Planung.
 
 
-__lent__
+3. __lent__
 
 
 In _lent_ sind alle aktuell verliehene Ordner aufgelistet.
@@ -82,7 +90,7 @@ _lentat_ gibt den Ausleihzeitpunkt wieder.
 Unter Ordner in _returned_ sind alle zurückgegebenen Ordner aufgelistet. Dies dient der History und der Statistik. 
 
 
-__returned__
+4. __returned__
 
 
 In _returned_ besteht aus folgenden Attributen:
@@ -100,7 +108,7 @@ _lentat_ gibt den Ausleihzeitpunkt wieder.
 
 _returnedat_ gibt den Rückgabezeitpunkt wieder.
  
-### wichtige Funktionen
+5. ### wichtige Funktionen
 * suchen nach:
     * Namen (sowohl Vor- als auch Nachname), dabei sollten Rechtschreibfehler, überflüssige Leerzeichen etc. keinen Unterschied machen
     * UNI-ID, Matrikelnummer
