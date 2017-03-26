@@ -5,12 +5,37 @@ Dokumentation: Ozean
 Alle Variablen wurden konsistent mit kleinen Buchstaben gesetzt.
 
 
-Ein Student "_student_" besteht aus folgenden Attributen:
-*
-*
-*
+Ein Student _student_ besteht aus folgenden Attributen:
+* id: int (primary key)
+* name: varchar
+* uniid: varchar
+* matriculationnumber: int
+* refund: bool default: false 
+* report: bool default: false 
+* comment: string
 
-Geplant werden weiterhin...
+Die _id_ wird eingeführt um ein primary key zu gewährleisten, da Datenbestände existieren, die keine uniid und Matrikelnummer besitzen. Die _id_ wird von der Software selbst gesetzt und inkrementiert (Autoinkrement).
+
+Der _name_ wird nicht gesondert in Vor- und Nachname getrennt, wegen Zweit- und Drittnamen und u.a. Namen aus asiatischen Ländern. Einzutragen ist hier der komplette Name.
+
+Die _uniid_ soll langfristig die Matrikelnummer ablösen. Durch die Uni-ID erhält man die Mailadresse, falls Problematiken auftreten sollten.
+
+Die _matriculationnumber_ wird langfristig durch die _uniid_ ersetzt. 
+
+_refund_ und _report_ sind boolsche Werte. 
+
+Sind entweder _refund_ == true oder _report_ == true, so darf sich _student_ pfandpflichtige Ordner ohne weitere Pfandzahlung ausleihen. _refund_ und _report_ werden per default auf false gesetzt.
+_refund_ wird auf true gesetzt, nachdem Pfand gezahlt wurde. _report_ wird auf true gesetzt, nachdem das Pfand zurückgezahlt wurde und dabei wird _refund_ wieder auf false gesetzt.
+
+Bsp.: 
+Pfand wurde bezahlt => refund = true
+Pfand wurde zurückgegeben $\Rightarrow$ refund = false, report = true
+Bericht wurde geschrieben vorm Einzahlen des Pfand $\Rightarrow$ report = true
+$\Rightarrow$ Studis bei denen refund == true oder report == true gesetzt ist, dürfen pfandpflichtige Ordner ausleihen ohne nochmals Pfand zu bezahlen.
+
+
+
+
 
 Unter "_folder_" sind sämtliche Ordner aufgelistet.
 
