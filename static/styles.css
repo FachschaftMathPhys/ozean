@@ -10,3 +10,71 @@ label{
     padding: 0px 10px;
     box-sizing: border-box;
 }
+
+
+.panel{
+    margin: 15px;
+}
+
+.actions{
+    float: right;
+    display: inline-block;
+}
+
+.student-actions{
+    
+}
+
+.lend-actions{
+    
+}
+
+/* mobile */
+
+@media (max-width: 767px) {
+#logo{
+    width:70px;
+    height:auto;
+}
+
+.jumbotron{
+    padding-bottom: 1px !important;   
+    margin-bottom: 10px !important;
+}
+
+#search{
+    margin-bottom: 10px;
+}
+
+.bootstrap-select{
+    margin-bottom: 10px;
+}
+
+.row-margin-top-10 > .col-sm-6, .col-sm-3{
+    margin-bottom: 10px;
+}
+
+.btn-toggle{
+    float: right !important;
+}
+
+label{
+     padding-bottom: 5px;
+}
+
+.actions{
+    float:none;
+    display:block !important;
+    margin-top: 5px;
+    
+}
+
+.student-actions{
+    
+}
+
+.lend-actions{
+    
+}
+
+}
