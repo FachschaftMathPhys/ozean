@@ -156,78 +156,21 @@
                         <th>ausgeliehen</th>
                       </tr>
                     </thead>
-                    <tbody>
+                    <tbody data-bind="foreach: lent">
                       <tr>
-                        <td>KI1A</td>
-                        <td>Tom Rix
+                        <td data-bind="text: folderName"></td>
+                        <td> <span data-bind="text: studentName"> </span>
                             <div class="actions student-actions">
                                 <button class="btn btn-primary" title="Studi bearbeiten"><span class="glyphicon glyphicon-pencil"></span></button>
                                 <button class="btn btn-primary" title="Studi per Mail erinnern"><span class="glyphicon glyphicon-envelope"></span></button>
                             </div>
                         </td>
-                        <td> 23. März 17:50
+                        <td> <span data-bind="text: lentatAt"> </span>
                             <div class="actions lend-actions">
                                 <button class="btn btn-block btn-success">Zurückgeben</button>
                             </div>
                         </td>
                       </tr>
-                      <tr>
-                        <td>VP1</td>
-                        <td>Kirsten
-                            <div class="actions student-actions">
-                                <button class="btn btn-primary" title="Studi bearbeiten"><span class="glyphicon glyphicon-pencil"></span></button>
-                                <button class="btn btn-primary" title="Studi per Mail erinnern"><span class="glyphicon glyphicon-envelope"></span></button>
-                            </div>
-                        </td>
-                        <td> 23. März 17:50
-                            <div class="actions lend-actions">
-                                <button class="btn btn-block btn-success">Zurückgeben</button>
-                            </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>KI1A</td>
-                        <td>Tom Rix
-                            <div class="actions student-actions">
-                                <button class="btn btn-primary" title="Studi bearbeiten"><span class="glyphicon glyphicon-pencil"></span></button>
-                                <button class="btn btn-primary" title="Studi per Mail erinnern"><span class="glyphicon glyphicon-envelope"></span></button>
-                            </div>
-                        </td>
-                        <td> 23. März 17:50
-                            <div class="actions lend-actions">
-                                <button class="btn btn-block btn-success">Zurückgeben</button>
-                            </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>KM1A</td>
-                        <td>Dang Duy Thao Le
-                            <div class="actions student-actions">
-                                <button class="btn btn-primary" title="Studi bearbeiten"><span class="glyphicon glyphicon-pencil"></span></button>
-                                <button class="btn btn-primary" title="Studi per Mail erinnern"><span class="glyphicon glyphicon-envelope"></span></button>
-                            </div>
-                        </td>
-                        <td> 23. März 17:50
-                            <div class="actions lend-actions">
-                                <button class="btn btn-block btn-success">Zurückgeben</button>
-                            </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>SM3</td>
-                        <td>Kai-Uwe Grabowski
-                            <div class="actions student-actions">
-                                <button class="btn btn-primary" title="Studi bearbeiten"><span class="glyphicon glyphicon-pencil"></span></button>
-                                <button class="btn btn-primary" title="Studi per Mail erinnern"><span class="glyphicon glyphicon-envelope"></span></button>
-                            </div>
-                        </td>
-                        <td> 23. März 17:50
-                            <div class="actions lend-actions">
-                                <button class="btn btn-block btn-warning">Rückgängig</button>
-                            </div>
-                        </td>
-                      </tr>
-
                     </tbody>
                   </table>
                 </div>
@@ -278,6 +221,20 @@
                  $(this).removeClass("open");
             });
           });
+
+
+function AppViewModel() {
+    var self = this;
+ 
+    self.lent = ko.observableArray([
+        { folderName: 'KP1A' },
+        { studentName: 'Mensch' },
+        { lentatAt: '10. Apr. 2017' }
+    ]);
+}
+ 
+ko.applyBindings(new AppViewModel());
+
 
 		</script>
 

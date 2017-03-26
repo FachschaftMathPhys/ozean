@@ -50,27 +50,27 @@ class folder(db.Model):
 
 class lent(db.Model):
     id    = db.Column(db.Integer, primary_key=True)
-    studentId = db.Column(db.Integer)
-    folderId = db.Column(db.Integer)
-    lentAt = db.Column(db.DateTime)
+    studentid = db.Column(db.Integer)
+    folderid = db.Column(db.Integer)
+    lentat = db.Column(db.DateTime)
 
     def __init__(self, studentId, folderId):
-        self.studentId = studentId
-        self.folderId = folderId
-        self.lentAt = datetime.now()
+        self.studentid = studentId
+        self.folderid = folderId
+        self.lentat = datetime.now()
 
 class returned(db.Model):
     id    = db.Column(db.Integer, primary_key=True)
-    studentId = db.Column(db.Integer)
-    folderId = db.Column(db.Integer)
-    lentAt = db.Column(db.DateTime)
-    returnedAt = db.Column(db.DateTime)
+    studentid = db.Column(db.Integer)
+    folderid = db.Column(db.Integer)
+    lentat = db.Column(db.DateTime)
+    returnedat = db.Column(db.DateTime)
 
     def __init__(self, studentId, folderId, lentAt):
-        self.studentId = studentId
-        self.folderId = folderId
-        self.lentAt = lentAt
-        self.returnedAt = datetime.now()
+        self.studentid = studentId
+        self.folderid = folderId
+        self.lentat = lentAt
+        self.returnedat = datetime.now()
 
 def initAPI():
 	db.create_all()
