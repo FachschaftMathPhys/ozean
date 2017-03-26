@@ -3,7 +3,7 @@
 	<head>
         <meta charset="UTF-8"> 
 		<title>Ozean | ...</title>
-        <link href="styles.css" rel="stylesheet" type="text/css">
+        <link href="/static/styles.css" rel="stylesheet" type="text/css">
 		<link href="./frameworks/easyautocomplete/easy-autocomplete.min.css" rel="stylesheet" type="text/css"> 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 		<script src="./frameworks/jquery/jquery-1.11.2.min.js"></script>
@@ -21,7 +21,7 @@
             
              <div class="jumbotron" style="padding-bottom: 10px; padding-top: 10px;">
                  
-                <img src="MathPhysLogo_klein.png" alt="Fachschafts Logo" class="pull-right vcenter" id="logo" height="140px" width="auto"/>
+                <img src="/static/MathPhysLogo_klein.png" alt="Fachschafts Logo" class="pull-right vcenter" id="logo" height="140px" width="auto"/>
                 <h1>Ozean</h1>
                 <p>Organ zur Entnahme allerlei nützlicher Ordner</p>
              </div>
@@ -216,7 +216,15 @@
 		<script>
 
 		var options = {
-			url: "students.json",
+			url: function(phrease) {
+				var filterObject={filters:[
+					{"or":[
+					{"name":"name","op":"ilike","val":"%"+phrease+"%"},
+					{"name":"uniid","op":"ilike","val":"%"+phrease+"%"}
+					]}
+				] };
+				return "/api/student?q="+JSON.stringify(filterObject) + '&sort=-id';
+			},
 
             listLocation: "objects",
 
