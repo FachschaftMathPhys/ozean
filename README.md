@@ -1,5 +1,5 @@
 
-Dokumentation: Ozean
+### Dokumentation: Ozean
 ===
 
 Alle Variablen wurden konsistent mit kleinen Buchstaben gesetzt.
@@ -133,12 +133,6 @@ _returnedat_ gibt den Rückgabezeitpunkt wieder.
 
 
 
----
-tags: MathPhys, Software
----
-
-Zu Überarbeitende FS-Software
-===
  
 ## Ozean (PHP)
 - [ ] Suche nach Uni-ID's
@@ -147,53 +141,8 @@ Zu Überarbeitende FS-Software
 
 ### Datenbankmodell
 
-___student___
-|Spaltenname|Datentyp|Beispiel|Bemerkungen|
-|---	   |---	    |---	 |---	     |
-|id   	   |int   	|1   	 |auto incement, not null|
-|name 	   |varchar |Tom Rix |_in Vor- und Nachname trennen?_ $\Rightarrow$ wurde sich explizit gegen entschieden, wegen Zweit und Drittnamen u.a. aus asiatischen Ländern |
-|uniid 	   |varchar |jb007 	 |Validität prüfen|
-|matriculationnumber|varchar|1234567|soll langfristig durch UNI-ID ersetzt werden|
-|refund	   |bool    |true 	 |Pfand bezahlt? default: false , siehe Anmerkungen unten|
-|report   |bool    |true  	 |Bericht geschrieben? default: false |
-|comment|text   |unzuverlässig|Blacklisted|
-|   	   |   	    |   	 |   	     |
-Pfand wurde bezahlt $\Rightarrow$ refund = true
-Pfand wurde zurückgegeben $\Rightarrow$ refund = false, report = true
-Bericht wurde geschrieben vorm Einzahlen des Pfand $\Rightarrow$ report = true
-
-$\Rightarrow$ Studis bei denen refund == true oder report == true gesetzt ist, dürfen pfandpflichtige Ordner ausleihen
 
 
-
-
-___folder___
-|Spaltenname|Datentyp|Beispiel|Bemerkungen|
-|---	   |---	    |---	 |---	     |
-|id   	   |int   	|1   	 |auto incement, not null|
-|name 	   |varchar |KM1A    |           |
-|content   |varchar |        |           |
-|obligation_to_report|boolean|1    |           |
-|barcode   |varchar |2230423 |_feature in planung_|
-
-___lent___ (zurückgegebene Ordner werden einfach in die returned Tabelle übertragen und mit Zeitstempel versehen. Dadurch bleibt die lent Tabelle klein, schnell und übersichtlich)
-|Spaltenname|Datentyp|Beispiel|Bemerkungen|
-|---	   |---	    |---	 |---	     |
-|id   	   |int   	|1   	 |auto incement, not null|
-|studentid |int     |1       |foreign |
-|folderid  |int	    |1   	 |forein key |
-|lentat    |datetime|2017-03-01 23:59|  Ausleihdatum |
-|   	   |   	    |   	 |   	     |
-
-___returned___ als History und für Statistiken ;)
-|Spaltenname|Datentyp|Beispiel|Bemerkungen|
-|---	   |---	    |---	 |---	     |
-|id   	   |int   	|1   	 |auto incement, not null|
-|studentid |int     |1       |foreign key|
-|folderid  |int	    |1   	 |forein key |
-|lentat    |datetime|2017-03-01 23:59|Ausleihdatum|
-|returnedat|datetime|2017-03-02 00:01|Rückgabedatum|
-|   	   |   	    |   	 |   	     |
 
 ### wichtige Funktionen
 * suchen nach:
