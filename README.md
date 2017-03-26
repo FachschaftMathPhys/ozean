@@ -57,7 +57,7 @@ Der _name_ ist die Bezeichnung des Ordners.
 
 Der _content_ beschreibt die fachliche Zuordnung des _folder_ .
 
-Die _obligation_to_report_ beschreibt, ob der _folder_ pfandpflichtig ist.ff
+Die _obligation_to_report_ beschreibt, ob der _folder_ pfandpflichtig ist.
 
 Der _barcode_ steht als neues Feature in Planung.
 
