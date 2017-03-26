@@ -4,17 +4,20 @@ Dokumentation: Ozean
 
 Alle Variablen wurden konsistent mit kleinen Buchstaben gesetzt.
 
+---
+student
+---
 
 Ein Student _student_ besteht aus folgenden Attributen:
-* id: int (primary key)
-* name: varchar
-* uniid: varchar
-* matriculationnumber: int
-* refund: bool default: false 
-* report: bool default: false 
-* comment: string
+* id : int (primary key), not null
+* name : varchar
+* uniid : varchar
+* matriculationnumber : int
+* refund : bool, default: false 
+* report : bool, default: false 
+* comment : string
 
-Die _id_ wird eingeführt um ein primary key zu gewährleisten, da Datenbestände existieren, die keine uniid und Matrikelnummer besitzen. Die _id_ wird von der Software selbst gesetzt und inkrementiert (Autoinkrement).
+Die _id_ wird eingeführt um ein primary key (Primärschlüssel) zu gewährleisten, da Datenbestände existieren, die keine uniid und Matrikelnummer besitzen. Die _id_ wird von der Software selbst gesetzt und inkrementiert (Autoinkrement).
 
 Der _name_ wird nicht gesondert in Vor- und Nachname getrennt, wegen Zweit- und Drittnamen und u.a. Namen aus asiatischen Ländern. Einzutragen ist hier der komplette Name.
 
@@ -33,32 +36,69 @@ Pfand wurde zurückgegeben $\Rightarrow$ refund = false, report = true
 Bericht wurde geschrieben vorm Einzahlen des Pfand $\Rightarrow$ report = true
 $\Rightarrow$ Studis bei denen refund == true oder report == true gesetzt ist, dürfen pfandpflichtige Ordner ausleihen ohne nochmals Pfand zu bezahlen.
 
+Zu verbessern wäre, dass die Datenbankelemente (ohne _comment_) not null sind.
 
+---
+folder
+---
 
+Unter _folder_ sind sämtliche Ordner eingetragen.
 
+Ein Ordner _folder_ besteht aus folgenden Attributen:
+* id : int, not null
+* name : varchar
+* content : varchar 
+* obligation_to_report : bool
+* barcode : varchar
 
-Unter "_folder_" sind sämtliche Ordner aufgelistet.
+Die _id_ wird von der Software gesetzt.
 
-Ein Ordner "_folder_" besteht aus folgenden Attributen:
-*
-*
-*
+Der _name_ ist die Bezeichnung des Ordners.
 
-Geplant werden weiterhin ...
+Der _content_ beschreibt die fachliche Zuordnung des _folder_ .
 
-Unter "_lent_" sind alle verliehenen Ordner aufgelistet.
+Die _obligation_to_report_ beschreibt, ob der _folder_ pfandpflichtig ist.ff
 
-Ein Ordner "_lent_" besteht aus folgenden Attributen:
-*
-*
-*
+Der _barcode_ steht als neues Feature in Planung.
 
-Unter Ordner "_returned_" sind alle zurückgegebenen Ordner aufgelistet.
+---
+lent
+---
 
-Ein Ordner "_returned_" besteht aus folgenden Attributen:
-*
-*
-*
+In _lent_ sind alle aktuell verliehene Ordner aufgelistet.
+
+Ein Ordner in _lent_ besteht aus folgenden Attributen:
+* id :int, not null
+* studentid : int
+* folderid : int
+* lentat : datetime
+
+Die _id_ ist in dem Fall ein primary key (Primärschlüssel), welche jedem Ausleihvorgang ein Autoinkrement setzt. 
+
+Die _studentid_ und _folderid_ sind jeweils foreign keys (Fremdschlüssel), welche die _id_ des _student_ und des _folder_ sind. 
+
+_lentat_ gibt den Ausleihzeitpunkt wieder.
+
+Unter Ordner in _returned_ sind alle zurückgegebenen Ordner aufgelistet. Dies dient der History und der Statistik. 
+
+---
+returned
+---
+
+In _returned_ besteht aus folgenden Attributen:
+* id : int, not null
+* studentid : int
+* folderid : int
+* lentat : datetime
+* returnedat : datetime
+
+Die _id_ setzt jedem Rückgabevorgang durch die Software ein Autoinkrement. 
+
+_studentid_ und _folderid_ sind foreign keys (Fremdschlüssel) aus _student_ und aus _folder_.
+
+_lentat_ gibt den Ausleihzeitpunkt wieder.
+
+_returnedat_ gibt den Rückgabezeitpunkt wieder.
 
 
 
@@ -140,7 +180,7 @@ ___lent___ (zurückgegebene Ordner werden einfach in die returned Tabelle übert
 |Spaltenname|Datentyp|Beispiel|Bemerkungen|
 |---	   |---	    |---	 |---	     |
 |id   	   |int   	|1   	 |auto incement, not null|
-|studentid |int     |1       |foreign key|
+|studentid |int     |1       |foreign |
 |folderid  |int	    |1   	 |forein key |
 |lentat    |datetime|2017-03-01 23:59|  Ausleihdatum |
 |   	   |   	    |   	 |   	     |
