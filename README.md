@@ -4,9 +4,9 @@ Dokumentation: Ozean
 
 Alle Variablen wurden konsistent mit kleinen Buchstaben gesetzt.
 
----
-student
----
+
+__student__
+
 
 Ein Student _student_ besteht aus folgenden Attributen:
 * id : int (primary key), not null
@@ -38,9 +38,9 @@ $\Rightarrow$ Studis bei denen refund == true oder report == true gesetzt ist, d
 
 Zu verbessern wäre, dass die Datenbankelemente (ohne _comment_) not null sind.
 
----
-folder
----
+
+__folder__
+
 
 Unter _folder_ sind sämtliche Ordner eingetragen.
 
@@ -61,9 +61,9 @@ Die _obligation_to_report_ beschreibt, ob der _folder_ pfandpflichtig ist.ff
 
 Der _barcode_ steht als neues Feature in Planung.
 
----
-lent
----
+
+__lent__
+
 
 In _lent_ sind alle aktuell verliehene Ordner aufgelistet.
 
@@ -81,9 +81,9 @@ _lentat_ gibt den Ausleihzeitpunkt wieder.
 
 Unter Ordner in _returned_ sind alle zurückgegebenen Ordner aufgelistet. Dies dient der History und der Statistik. 
 
----
-returned
----
+
+__returned__
+
 
 In _returned_ besteht aus folgenden Attributen:
 * id : int, not null
