@@ -25,70 +25,6 @@
                 <p>Organ zur Entnahme allerlei nützlicher Ordner</p>
              </div>
 
-             <div class="well">
-                <form>
-                    <div class="row">
-                        <div class="col-sm-6">
-                          <div class="input-group">
-                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                            <input id="name" type="text" class="form-control" name="name" placeholder="Name">
-                          </div>
-                        </div>
-                        <div class="col-sm-3">
-                          <div class="input-group">
-                            <span class="input-group-addon"><i class="glyphicon glyphicon-hd-video"></i></span>
-                            <input id="uniid" type="text" class="form-control" name="uniid" placeholder="Uni ID">
-                          </div>
-                        </div>
-                        <div class="col-sm-3">
-                          <div class="input-group">
-                            <span class="input-group-addon"><i class="glyphicon glyphicon-sound-6-1"></i></span>
-                            <input id="matrikelnummer" type="text" class="form-control" name="matrikelnummer" placeholder="Matrikelnummer">
-                          </div>
-                        </div>
-                    </div>
-
-                    <div class="row row-margin-top-10">
-                        <div class="col-sm-3">
-                            <label for="great">Pfand bezahlt? </label><input type="checkbox" name="pfand" id="pfand">
-
-                          <script>
-
-                                $("input#pfand").bootstrapSwitch({
-                                    on: '&nbsp;&nbsp;Ja&nbsp;&nbsp;',
-                                    off: 'Nein',
-                                    onClass: 'success',
-                                    offClass: 'warning',
-
-                                });
-
-                          </script>
-                        </div>
-                        <div class="col-sm-3">
-                                <label for="great">Bericht? </label><input type="checkbox" name="bericht" id="bericht">
-
-                          <script>
-
-                                $("input#bericht").bootstrapSwitch({
-                                    on: '&nbsp;&nbsp;Ja&nbsp;&nbsp;',
-                                    off: 'Nein',
-                                    onClass: 'success',
-                                    offClass: 'warning',
-
-                                });
-
-                          </script>
-                        </div>
-
-                        <div class="col-sm-6">
-                            <a href="#" class="btn btn-block btn-primary btn-success">Speichern <span class="glyphicon glyphicon-floppy-disk"></span></a>
-                        </div>
-                    </div>
-
-                </form>
-
-             </div>
-
              <div class="row">
 
                 <div class="col-sm-7">
@@ -131,15 +67,92 @@
 
              </div>
 
-             <!-- - -->
-
              <div class="row row-margin-top-40">
+
+             <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h4>Studierendes eintragen
+                            <a href="#" class="btn btn-xs btn-default pull-right"><span class="glyphicon glyphicon-remove"></span></a>           
+                            </h4>
+                        </div>
+                    </div>
+                </div>
+             
+                <div class="panel-body">
+                    <form>
+                        <div class="row row-margin-top-10">
+                            <div class="col-sm-6">
+                              <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                <input id="name" type="text" class="form-control" name="name" placeholder="Name">
+                              </div>
+                            </div>
+                            <div class="col-sm-3">
+                              <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-hd-video"></i></span>
+                                <input id="uniid" type="text" class="form-control" name="uniid" placeholder="Uni ID">
+                              </div>
+                            </div>
+                            <div class="col-sm-3">
+                              <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-sound-6-1"></i></span>
+                                <input id="matrikelnummer" type="text"
+                                class="form-control" name="matrikelnummer"
+                                placeholder="Matrikelnummer" disabled>
+                              </div>
+                            </div>
+                        </div>
+
+                        <div class="row row-margin-top-10">
+                            <div class="col-sm-3">
+                                <label for="great">Pfand bezahlt? </label><input type="checkbox" name="pfand" id="pfand">
+
+                              <script>
+
+                                    $("input#pfand").bootstrapSwitch({
+                                        on: '&nbsp;&nbsp;Ja&nbsp;&nbsp;',
+                                        off: 'Nein',
+                                        onClass: 'success',
+                                        offClass: 'warning',
+
+                                    });
+
+                              </script>
+                            </div>
+                            <div class="col-sm-3">
+                                    <label for="great">Bericht? </label><input type="checkbox" name="bericht" id="bericht">
+
+                              <script>
+
+                                    $("input#bericht").bootstrapSwitch({
+                                        on: '&nbsp;&nbsp;Ja&nbsp;&nbsp;',
+                                        off: 'Nein',
+                                        onClass: 'success',
+                                        offClass: 'warning',
+
+                                    });
+
+                              </script>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <a href="#" class="btn btn-block btn-primary btn-success">Speichern <span class="glyphicon glyphicon-floppy-disk"></span></a>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+             </div>
+
+             <!-- - -->
 
                  <table class="table table-striped">
                     <thead>
                       <tr>
                         <th>Ordner</th>
-                        <th>Studi Name</th>
+                        <th>Studierendes</th>
                         <th></th>
                         <th>ausgeliehen</th>
                         <th>zurückgegeben</th>
