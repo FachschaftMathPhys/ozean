@@ -21,6 +21,9 @@
     "EasyAutocomplete": "^1.3.5",
     "bootstrap": "^3.3.7",
     "bootstrap-switch": "mewsoft/bootstrap-switch",
-    "bootstrap-select": "^1.12.2"
+    "bootstrap-select": "^1.12.2",
+    "requirejs": "^2.3.3",
+    "knockout": "knockout.js#^3.1.0",
+    "knockout-bootstrap-switch": "pauloortins/knockout-bootstrap-switch"
   }
 }
