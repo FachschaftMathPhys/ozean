@@ -112,27 +112,21 @@
 
                         <div class="row row-margin-top-10">
                             <div class="col-sm-3">
-                                <label for="great">Pfand bezahlt? </label><input type="checkbox" name="pfand" id="pfand_add" data-bind="checked: to_be_student().refund" >
-																<div>
-																<!--<input type="checkbox"  data-bind="bootstrapSwitch:  to_be_student().refund"/>-->
-															</div>
-															<script>
+                                <label for="great">Pfand bezahlt? </label><input type="checkbox" name="pfand" id="pfand_add" data-bind="bootstrapSwitch:  to_be_student().refund"/>
+
+								<script>
 
                                   $("input#pfand_add").bootstrapSwitch({
                                         onText: '&nbsp;&nbsp;Ja&nbsp;&nbsp;',
                                         offText: 'Nein',
                                         onColor: 'success',
                                         offColor: 'warning',
-                                        state: false,
-                                        onSwitchChange: function(event, state){
-                                            $(this).prop('checked', state);
-                                        },
                                     });
 
                               </script>
                             </div>
                             <div class="col-sm-3">
-                                    <label for="great">Bericht? </label><input type="checkbox" name="bericht" id="bericht_add" data-bind="checked: to_be_student().report">
+                                    <label for="great">Bericht? </label><input type="checkbox" name="bericht" id="bericht_add" data-bind="bootstrapSwitch:  to_be_student().report"/>
 
                               <script>
 
@@ -141,10 +135,6 @@
                                         offText: 'Nein',
                                         onColor: 'success',
                                         offColor: 'warning',
-                                        state: false,
-                                        onSwitchChange: function(event, state){
-                                            $(this).prop('checked', state);
-                                        },
                                     });
 
                               </script>
