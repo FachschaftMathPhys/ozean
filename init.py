@@ -5,7 +5,7 @@ from datetime import datetime
 
 app = Flask(__name__)
 #app.config['DEBUG'] = True
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://localhost/postgres'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///foo.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 apimanager = APIManager(app, flask_sqlalchemy_db=db)
@@ -54,9 +54,9 @@ class lent(db.Model):
     folderid = db.Column(db.Integer)
     lentat = db.Column(db.DateTime)
 
-    def __init__(self, studentId, folderId):
-        self.studentid = studentId
-        self.folderid = folderId
+    def __init__(self, studentid=None, folderid=None):
+        self.studentid = studentid
+        self.folderid = folderid
         self.lentat = datetime.now()
 
 class returned(db.Model):
@@ -66,10 +66,10 @@ class returned(db.Model):
     lentat = db.Column(db.DateTime)
     returnedat = db.Column(db.DateTime)
 
-    def __init__(self, studentId, folderId, lentAt):
-        self.studentid = studentId
-        self.folderid = folderId
-        self.lentat = lentAt
+    def __init__(self, studentid=None, folderid=None, lentat=None):
+        self.studentid = studentid
+        self.folderid = folderid
+        self.lentat = lentat
         self.returnedat = datetime.now()
 
 def initAPI():

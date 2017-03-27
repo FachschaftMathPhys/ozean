@@ -1,4 +1,4 @@
-define ['student','lent','ajax'],(Student,Lent,ajax)->
+define ['student','lent','folder','ajax'],(Student,Lent,Folder,ajax)->
   class HauptViewModell
     constructor: ()->
       @searched_student_id= ko.observable -1
@@ -35,3 +35,23 @@ define ['student','lent','ajax'],(Student,Lent,ajax)->
       ajax("api/lent", "GET").done((data)=>
         @lent.push new Lent i for i in data.objects
       )
+      @folders= ko.observableArray []
+      @selected_folders= ko.observableArray []
+      ajax("api/folder","GET").done((data)=>
+        @folders.push new Folder i for i in data.objects)
+      @rent =()=>
+        ajax("api/lent","POST",(studentid:@searched_student_id(),folderid:i)).done((data)=>
+          @lent.push new Lent data) for i in @selected_folders()
+        @selected_folders([])
+      @restore=(data)=>
+        console.log data
+        #delete lent object
+        ajax("api/lent/#{data.id()}","DELETE").done((data2)=>
+          #returned
+          ajax("api/returned","POST",(studentid:data.studentid(),folderid:data.folderid())).done((data3)=>
+            console.log data3
+            @lent.remove((obj)->data.id()==obj.id())
+            ))
+      @edit_table_student=(data)=>
+        @searched_student_id data.studentid()
+        @edit_student()
