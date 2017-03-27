@@ -33,18 +33,19 @@
 
                 <div class="col-sm-7">
                     <input id="search" placeholder="Studierendes suchen"/>
+										<input id="search-index-holder" data-bind="value:searched_student_id" style="display:none"></input>
                 </div>
 
                 <div class="col-sm-5">
 
                     <div class="btn-group btn-group-justified">
-                        <a href="#" class="btn btn-primary  btn-warning" type="submit" id="lend" name="lend"><span class="glyphicon glyphicon-pencil"></span> Studi bearbeiten</a>
-                        <a href="#" class="btn btn-primary btn-danger">Studi hinzufügen <span class="glyphicon glyphicon-plus"></span></a>
+
+                        <a href="#" class="btn btn-primary  btn-warning" type="submit" id="lend" data-bind="click: edit_student" name="lend"><span class="glyphicon glyphicon-pencil"></span> Studi bearbeiten</a>
+												<a href="#" class="btn btn-primary btn-danger" data-bind="click:start_add">Studi hinzufügen <span class="glyphicon glyphicon-plus"></span></a>
                     </div>
                 </div>
 
              </div>
-
              <!-- - -->
 
              <div class="row row-margin-top-10">
@@ -72,13 +73,13 @@
              </div>
 
              <div class="row row-margin-top-40">
-
-             <div class="panel panel-default">
+						<div data-bind="visible:adding_student">
+             <div class="panel panel-default" id="add-student">
                 <div class="panel-heading">
                     <div class="row">
                         <div class="col-sm-12">
                             <h4>Studierendes eintragen
-                            <a href="#" class="btn btn-xs btn-default pull-right"><span class="glyphicon glyphicon-remove"></span></a>
+                            <a href="#" data-bind="click:stop_add" class="btn btn-xs btn-default pull-right"><span class="glyphicon glyphicon-remove"></span></a>
                             </h4>
                         </div>
                     </div>
@@ -148,13 +149,15 @@
                     </form>
                 </div>
              </div>
+					 </div>
 						 <!-- Bearbeiten -->
+						 <div data-bind="visible:editing_student">
 						 <div class="panel panel-default">
                 <div class="panel-heading">
                     <div class="row">
                         <div class="col-sm-12">
                             <h4>Studierendes bearbeiten
-                            <a href="#" class="btn btn-xs btn-default pull-right"><span class="glyphicon glyphicon-remove"></span></a>
+                            <a href="#" data-bind="click:stop_edit" class="btn btn-xs btn-default pull-right"><span class="glyphicon glyphicon-remove"></span></a>
                             </h4>
                         </div>
                     </div>
@@ -166,19 +169,19 @@
                             <div class="col-sm-6">
                               <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                <input id="name" type="text" class="form-control" name="name" placeholder="Name">
+                                <input id="name" type="text" class="form-control" data-bind="value:edited_student().name" name="name" placeholder="Name">
                               </div>
                             </div>
                             <div class="col-sm-3">
                               <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-hd-video"></i></span>
-                                <input id="uniid" type="text" class="form-control" name="uniid" placeholder="Uni ID">
+                                <input id="uniid" type="text" class="form-control" data-bind="value:edited_student().uniid" name="uniid" placeholder="Uni ID">
                               </div>
                             </div>
                             <div class="col-sm-3">
                               <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-sound-6-1"></i></span>
-                                <input id="matrikelnummer" type="text"
+                                <input id="matrikelnummer" type="text" data-bind="value:edited_student().matriculationnumber"
                                 class="form-control" name="matrikelnummer"
                                 placeholder="Matrikelnummer" disabled>
                               </div>
@@ -187,7 +190,7 @@
 
                         <div class="row row-margin-top-10">
                             <div class="col-sm-3">
-                                <label>Pfand bezahlt? </label><input type="checkbox" name="pfand" id="pfand">
+                                <label>Pfand bezahlt? </label><input type="checkbox" name="pfand" id="pfand" data-bind="bootstrapSwitch:  edited_student().refund">
 
                               <script>
 
@@ -205,7 +208,7 @@
                               </script>
                             </div>
                             <div class="col-sm-3">
-                                    <label for="great">Bericht? </label><input type="checkbox" name="bericht" id="bericht">
+                                    <label for="great">Bericht? </label><input type="checkbox" name="bericht" data-bind="bootstrapSwitch:  to_be_student().report" id="bericht">
 
                               <script>
 
@@ -224,13 +227,14 @@
                             </div>
 
                             <div class="col-sm-6">
-                                <a href="#" class="btn btn-block btn-primary btn-success">Speichern <span class="glyphicon glyphicon-floppy-disk"></span></a>
+                                <a href="#" class="btn btn-block btn-primary btn-success" data-bind="click:save_student_changes">Speichern <span class="glyphicon glyphicon-floppy-disk"></span></a>
                             </div>
                         </div>
 
                     </form>
                 </div>
              </div>
+					 </div>
              <!-- - -->
              <div class="table-responsive">
                  <table class="table table-striped">
@@ -289,6 +293,13 @@
 			list: {
 				match: {
 					enabled: true
+				},
+				onChooseEvent:function(data){
+					console.log(data);
+					var index =($("#search").getSelectedItemData().id);
+					//Trigger
+					$("#search-index-holder").val(index).trigger("change");
+					//alert("Miau");
 				}
 			}
 		};
