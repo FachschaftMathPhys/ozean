@@ -5,7 +5,7 @@ from datetime import datetime
 
 app = Flask(__name__)
 #app.config['DEBUG'] = True
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://localhost/postgres'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///foo.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 apimanager = APIManager(app, flask_sqlalchemy_db=db)
@@ -19,12 +19,12 @@ class student(db.Model):
     report = db.Column(db.Boolean)
     comment = db.Column(db.String(255))
 
-    def __init__(self, name, uniId,
-        matriculationNumber, refund, report,
-        comment):
+    def __init__(self, name=None, uniid=None,
+        matriculationnumber=None, refund=None, report=None,
+        comment=None):
         self.name = name
-        self.uniid = uniId
-        self.matriculationnumber = matriculationNumber
+        self.uniid = uniid
+        self.matriculationnumber = matriculationnumber
         self.refund = refund
         self.report = report
         self.comment = comment
@@ -44,33 +44,33 @@ class folder(db.Model):
         self.content = content
         self.obligation_to_report = obligation
         self.barcode = barcode
-    
+
     def __repr__(self):
         return '<User %r>' % self.name
 
 class lent(db.Model):
     id    = db.Column(db.Integer, primary_key=True)
-    studentId = db.Column(db.Integer)
-    folderId = db.Column(db.Integer)
-    lentAt = db.Column(db.DateTime)
+    studentid = db.Column(db.Integer)
+    folderid = db.Column(db.Integer)
+    lentat = db.Column(db.DateTime)
 
-    def __init__(self, studentId, folderId):
-        self.studentId = studentId
-        self.folderId = folderId
-        self.lentAt = datetime.now()
+    def __init__(self, studentid=None, folderid=None):
+        self.studentid = studentid
+        self.folderid = folderid
+        self.lentat = datetime.now()
 
 class returned(db.Model):
     id    = db.Column(db.Integer, primary_key=True)
-    studentId = db.Column(db.Integer)
-    folderId = db.Column(db.Integer)
-    lentAt = db.Column(db.DateTime)
-    returnedAt = db.Column(db.DateTime)
+    studentid = db.Column(db.Integer)
+    folderid = db.Column(db.Integer)
+    lentat = db.Column(db.DateTime)
+    returnedat = db.Column(db.DateTime)
 
-    def __init__(self, studentId, folderId, lentAt):
-        self.studentId = studentId
-        self.folderId = folderId
-        self.lentAt = lentAt
-        self.returnedAt = datetime.now()
+    def __init__(self, studentid=None, folderid=None, lentat=None):
+        self.studentid = studentid
+        self.folderid = folderid
+        self.lentat = lentat
+        self.returnedat = datetime.now()
 
 def initAPI():
 	db.create_all()
