@@ -8,4 +8,4 @@ def index():
 if __name__ == '__main__':
 	initAPI()
 	app.run();
-	#app.run(host="0.0.0.0", port=int(80))
+	#app.run(host="0.0.0.0", port=int(5000))

@@ -8,7 +8,7 @@
 		<link href="/static/bower_components/EasyAutocomplete/dist/easy-autocomplete.min.css" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="/static/bower_components/bootstrap/dist/css/bootstrap.min.css">
 				<script src="/static/bower_components/knockout/knockout.js"></script>
-		<script src="/static/bower_components/jquery/dist/jquery.min.js"></script>
+		<script src="/static/bower_components/jquery/jquery.min.js"></script>
 		<script src="/static/bower_components/EasyAutocomplete/dist/jquery.easy-autocomplete.min.js" type="text/javascript" ></script>
 				<!--bootstrap-->
 				<script src="static/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -284,8 +284,12 @@
 					{"name":"name","op":"ilike","val":"%"+phrease+"%"},
 					{"name":"uniid","op":"ilike","val":"%"+phrease+"%"}
 					]}
-				] };
-				return "/api/student?q="+JSON.stringify(filterObject) + '&sort=-id';
+				],
+                order_by:[
+                    {"field": "id", "direction": "desc"}
+                ] };
+                //alert(JSON.stringify(filterObject));
+				return "/api/student?q="+JSON.stringify(filterObject);
 			},
 
             listLocation: "objects",
@@ -312,18 +316,7 @@
 		$("#search").easyAutocomplete(options);
         $("#search").parent().css("width", "100%");
         $("#search").css("width", "100%");
-        //#$("#listLocation").easyAutocomplete(options);
-        $(document).ready(function () {
-          /*  $(".selectpicker").selectpicker();
-            $(".bootstrap-select").click(function () {
-                 $(this).toggleClass("open");
-            });
-            $(".bootstrap-select").mouseleave(function () {
-                 $(this).removeClass("open");
-            });*/
-          });
-
-
+        
 		</script>
 
 	</body>
