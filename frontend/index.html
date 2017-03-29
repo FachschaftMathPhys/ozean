@@ -3,12 +3,12 @@
 	<head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta charset="UTF-8">
-		<title>Ozean | ...</title>
+		<title>Ozean</title>
         <link href="/static/styles.css" rel="stylesheet" type="text/css">
 		<link href="/static/bower_components/EasyAutocomplete/dist/easy-autocomplete.min.css" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="/static/bower_components/bootstrap/dist/css/bootstrap.min.css">
 				<script src="/static/bower_components/knockout/knockout.js"></script>
-		<script src="/static/bower_components/jquery/jquery.min.js"></script>
+		<script src="/static/bower_components/jquery/dist/jquery.min.js"></script>
 		<script src="/static/bower_components/EasyAutocomplete/dist/jquery.easy-autocomplete.min.js" type="text/javascript" ></script>
 				<!--bootstrap-->
 				<script src="static/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -281,8 +281,8 @@
 			url: function(phrease) {
 				var filterObject={filters:[
 					{"or":[
-					{"name":"name","op":"ilike","val":"%"+phrease+"%"},
-					{"name":"uniid","op":"ilike","val":"%"+phrease+"%"}
+					{"name":"name","op":"ilike","val":"%25"+phrease+"%25"},
+					{"name":"uniid","op":"ilike","val":"%25"+phrease+"%25"}
 					]}
 				],
                 order_by:[
