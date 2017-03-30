@@ -5,6 +5,9 @@ define ['student','lent','folder','ajax'],(Student,Lent,Folder,ajax)->
       @student_selected= ko.computed ()=>
         @searched_student_id()>=0
       @searched_student_id(-1)
+      @searched_student_uniid= ko.observable -1
+      @student_selected_has_uniid= ko.computed ()=>
+        @searched_student_uniid()!=''
       @to_be_student = ko.observable new Student
       @editing_student= ko.observable false
       @adding_student= ko.observable false
@@ -40,6 +43,8 @@ define ['student','lent','folder','ajax'],(Student,Lent,Folder,ajax)->
       ajax("api/folder","GET").done((data)=>
         @folders.push new Folder i for i in data.objects)
       @rent =()=>
+        return alert "Kein Student ausgewählt" if not @student_selected()
+        return alert "Student hat keine uniid" if not @student_selected_has_uniid()
         ajax("api/lent","POST",(studentid:@searched_student_id(),folderid:i)).done((data)=>
           @lent.push new Lent data) for i in @selected_folders()
         @selected_folders([])
@@ -48,10 +53,10 @@ define ['student','lent','folder','ajax'],(Student,Lent,Folder,ajax)->
         #delete lent object
         ajax("api/lent/#{data.id()}","DELETE").done((data2)=>
           #returned
+          @lent.remove((obj)->data.id()==obj.id())
           ajax("api/returned","POST",(studentid:data.studentid(),folderid:data.folderid())).done((data3)=>
-            console.log data3
-            @lent.remove((obj)->data.id()==obj.id())
-            ))
+            #console.log data3
+          ))
       @edit_table_student=(data)=>
         @searched_student_id data.studentid()
         @edit_student()

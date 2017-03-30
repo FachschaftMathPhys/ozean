@@ -3,7 +3,7 @@
 	<head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta charset="UTF-8">
-		<title>Ozean | ...</title>
+		<title>Ozean</title>
         <link href="/static/styles.css" rel="stylesheet" type="text/css">
 		<link href="/static/bower_components/EasyAutocomplete/dist/easy-autocomplete.min.css" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="/static/bower_components/bootstrap/dist/css/bootstrap.min.css">
@@ -36,7 +36,8 @@
 
                 <div class="col-sm-7">
                     <input id="search" placeholder="Studierendes suchen"/>
-										<input id="search-index-holder" data-bind="value:searched_student_id" style="display:none"></input>
+					<input id="search-index-holder" data-bind="value:searched_student_id" style="display:none"></input>
+                    <input id="search-uniid-holder" data-bind="value:searched_student_uniid" style="display:none"></input>
                 </div>
 
                 <div class="col-sm-5">
@@ -44,7 +45,7 @@
                     <div class="btn-group btn-group-justified">
 
                         <a href="#" class="btn btn-primary  btn-warning" type="submit" id="lend" data-bind="click: edit_student" name="lend"><span class="glyphicon glyphicon-pencil"></span> Studi bearbeiten</a>
-												<a href="#" class="btn btn-primary btn-danger" data-bind="click:start_add">Studi hinzufügen <span class="glyphicon glyphicon-plus"></span></a>
+						<a href="#" class="btn btn-primary btn-danger" data-bind="click:start_add">Studi hinzufügen <span class="glyphicon glyphicon-plus"></span></a>
                     </div>
                 </div>
 
@@ -281,11 +282,15 @@
 			url: function(phrease) {
 				var filterObject={filters:[
 					{"or":[
-					{"name":"name","op":"ilike","val":"%"+phrease+"%"},
-					{"name":"uniid","op":"ilike","val":"%"+phrease+"%"}
+					{"name":"name","op":"ilike","val":"%25"+phrease+"%25"},
+					{"name":"uniid","op":"ilike","val":"%25"+phrease+"%25"}
 					]}
-				] };
-				return "/api/student?q="+JSON.stringify(filterObject) + '&sort=-id';
+				],
+                order_by:[
+                    {"field": "id", "direction": "desc"}
+                ] };
+                //alert(JSON.stringify(filterObject));
+				return "/api/student?q="+JSON.stringify(filterObject);
 			},
 
             listLocation: "objects",
@@ -300,11 +305,11 @@
 					enabled: true
 				},
 				onChooseEvent:function(data){
-					console.log(data);
 					var index =($("#search").getSelectedItemData().id);
+                    var uniid =($("#search").getSelectedItemData().uniid);
 					//Trigger
 					$("#search-index-holder").val(index).trigger("change");
-					//alert("Miau");
+                    $("#search-uniid-holder").val(uniid).trigger("change");
 				}
 			}
 		};
@@ -312,18 +317,7 @@
 		$("#search").easyAutocomplete(options);
         $("#search").parent().css("width", "100%");
         $("#search").css("width", "100%");
-        //#$("#listLocation").easyAutocomplete(options);
-        $(document).ready(function () {
-          /*  $(".selectpicker").selectpicker();
-            $(".bootstrap-select").click(function () {
-                 $(this).toggleClass("open");
-            });
-            $(".bootstrap-select").mouseleave(function () {
-                 $(this).removeClass("open");
-            });*/
-          });
-
-
+        
 		</script>
 
 	</body>

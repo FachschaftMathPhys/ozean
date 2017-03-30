@@ -2,3 +2,4 @@ __pycache__
 static/bower_components
 static/lib
 frontend/bower_components/
+foo.db

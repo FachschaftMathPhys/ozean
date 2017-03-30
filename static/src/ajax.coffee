@@ -6,8 +6,10 @@ define [],()->
     request =
       url: uri,
       type: method
-      contentType: "application/json"
-      accepts: "application/json"
+      headers: {
+        Accept: "application/json; charset=utf-8",
+        "Content-Type": "application/json; charset=utf-8"
+      }
       cache: isChached
       dataType: 'json'
       async:isChached
