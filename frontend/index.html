@@ -35,7 +35,7 @@
              <div class="row">
 
                 <div class="col-sm-7">
-                    <input id="search" placeholder="Studierendes suchen"/>
+                    <input id="search" tabindex="1" placeholder="Studierendes suchen"/>
 					<input id="search-index-holder" data-bind="value:searched_student_id" style="display:none"></input>
                     <input id="search-uniid-holder" data-bind="value:searched_student_uniid" style="display:none"></input>
                 </div>
@@ -68,12 +68,12 @@
                         <option>DI1</option>
                       </optgroup>
                     </select>-->
-										<select id="folders" name="" multiple data-live-search="true" data-width="100%" data-bind="selectPicker:folders,options:folders,selectedOptions:selected_folders,optionsText:'text',optionsValue:'id'">
+										<select id="folders" tabindex="2" name="" multiple data-live-search="true" data-width="100%" data-bind="selectPicker:folders,options:folders,selectedOptions:selected_folders,optionsText:'text',optionsValue:'id'">
 										</select>
                 </div>
 
                 <div class="col-sm-5">
-                    <input type="submit" id="lend" name="lend" value="Ausleihen" class="btn btn-block btn-primary" data-bind="click:rent"  />
+                    <input type="submit" id="lend" name="lend" tabindex="3" value="Ausleihen" class="btn btn-block btn-primary" data-bind="click:rent"  />
                 </div>
 
              </div>
