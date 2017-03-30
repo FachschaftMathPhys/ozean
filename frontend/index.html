@@ -36,7 +36,8 @@
 
                 <div class="col-sm-7">
                     <input id="search" placeholder="Studierendes suchen"/>
-										<input id="search-index-holder" data-bind="value:searched_student_id" style="display:none"></input>
+					<input id="search-index-holder" data-bind="value:searched_student_id" style="display:none"></input>
+                    <input id="search-uniid-holder" data-bind="value:searched_student_uniid" style="display:none"></input>
                 </div>
 
                 <div class="col-sm-5">
@@ -44,7 +45,7 @@
                     <div class="btn-group btn-group-justified">
 
                         <a href="#" class="btn btn-primary  btn-warning" type="submit" id="lend" data-bind="click: edit_student" name="lend"><span class="glyphicon glyphicon-pencil"></span> Studi bearbeiten</a>
-												<a href="#" class="btn btn-primary btn-danger" data-bind="click:start_add">Studi hinzufügen <span class="glyphicon glyphicon-plus"></span></a>
+						<a href="#" class="btn btn-primary btn-danger" data-bind="click:start_add">Studi hinzufügen <span class="glyphicon glyphicon-plus"></span></a>
                     </div>
                 </div>
 
@@ -304,11 +305,11 @@
 					enabled: true
 				},
 				onChooseEvent:function(data){
-					console.log(data);
 					var index =($("#search").getSelectedItemData().id);
+                    var uniid =($("#search").getSelectedItemData().uniid);
 					//Trigger
 					$("#search-index-holder").val(index).trigger("change");
-					//alert("Miau");
+                    $("#search-uniid-holder").val(uniid).trigger("change");
 				}
 			}
 		};
