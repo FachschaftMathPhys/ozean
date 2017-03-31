@@ -24,7 +24,8 @@
     "bootstrap-select": "1.6.5",
     "requirejs": "^2.3.3",
     "knockout": "knockout.js#^3.1.0",
-    "knockout-bootstrap-switch": "pauloortins/knockout-bootstrap-switch"
+    "knockout-bootstrap-switch": "pauloortins/knockout-bootstrap-switch",
+    "moment": "momentjs#^2.18.1"
   },
   "resolutions": {
     "jquery": ">=1.8"
