@@ -21,7 +21,7 @@
 				<script src="/static/bower_components/knockout-bootstrap-switch/ko.bindingHandlers.bootstrapSwitch.js"></script>
 				<script type="text/javascript" src="static/ko.selectpicker.js"></script>
 				<script type="text/javascript" src="static/bower_components/moment/min/moment.min.js"></script>
-<script src="static/bower_components/moment/locale/de.js"></script>
+				<script src="static/bower_components/moment/locale/de.js"></script>
 				<script type="text/javascript"
  src="static/bower_components/requirejs/require.js" data-main="static/lib/index.js"></script>
 	</head>
@@ -259,7 +259,7 @@
                         <td> <span data-bind="text: student().name"> </span>
                             <div class="actions student-actions">
                                 <button class="btn btn-primary" title="Studi bearbeiten" data-bind="click:$parent.edit_table_student"><span class="glyphicon glyphicon-pencil"></span></button>
-                                <button class="btn btn-primary" title="Studi per Mail erinnern" href="mailto:"><span class="glyphicon glyphicon-envelope"></span></button>
+                                <a class="btn btn-primary" data-bind="attr: { href: MailPath }" title="Studi per Mail erinnern"><span class="glyphicon glyphicon-envelope"></span></a>
                             </div>
                         </td>
                         <td> <span data-bind="text: date().format('lll')"> </span>
