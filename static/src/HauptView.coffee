@@ -35,12 +35,13 @@ define ['student','lent','folder','ajax'],(Student,Lent,Folder,ajax)->
           @adding_student false
         )
       @lent=ko.observableArray []
-      ajax("api/lent", "GET").done((data)=>
+      ajax("api/lent?results_per_page=1000", "GET").done((data)=>
         @lent.push new Lent i for i in data.objects
       )
       @folders= ko.observableArray []
       @selected_folders= ko.observableArray []
-      ajax("api/folder","GET").done((data)=>
+      orderObject={order_by:[{"field": "obligation_to_report"},{"field": "name"}]}
+      ajax("api/folder?results_per_page=1000&q="+JSON.stringify(orderObject),"GET").done((data)=>
         @folders.push new Folder i for i in data.objects)
       @rent =()=>
         return alert "Kein Student ausgewählt" if not @student_selected()
