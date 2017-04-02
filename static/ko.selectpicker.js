@@ -25,7 +25,7 @@ ko.bindingHandlers.selectPicker = {
                // call the default Knockout value binding
                ko.bindingHandlers.value.update(element, allBindingsAccessor().value);
            }
-           console.log(value);
+           //console.log(value);
            $(element).selectpicker('refresh');
        }
   }
