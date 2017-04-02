@@ -6,6 +6,8 @@ define ['ajax','student','folder'],(ajax,Student,Folder)->
       @studentid= ko.observable data?.studentid
       @folderid= ko.observable data?.folderid
       @lentat = ko.observable data?.lentat
+      @date= ko.computed ()=>
+        moment(@lentat())
       @student = ko.observable new Student (name:"")
       @folder= ko.observable new Folder (name:"")
       #loading student and folder
