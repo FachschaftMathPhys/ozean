@@ -4,7 +4,10 @@
 ## Requirements
 
 ### Server: Python
-TODO: Einfügen
+  1. `flask`
+  2. `flask-sqlalchemy`
+  3. `flask-restless`
+
 
 ### Website
 
@@ -18,3 +21,7 @@ TODO: Einfügen
 1. `cd static`
 2. `bower install`
 3. `./build.sh` or `coffee -bco lib src`
+
+# Running
+
+`python main.py`
