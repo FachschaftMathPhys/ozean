@@ -29,7 +29,7 @@
         <div class="container" id="HauptView">
 
              <div class="jumbotron" style="padding-bottom: 10px; padding-top: 10px;">
-                <img src="/static/MathPhysLogo_klein.png" alt="Fachschafts Logo" class="pull-right vcenter" id="logo" height="140px" width="auto"/>
+                <img src="/static/MathPhysLogo_klein.png" alt="Fachschafts Logo" class="pull-right vcenter" id="logo" height="140"/>
                 <h1>Ozean</h1>
                 <p>Organ zur Entnahme allerlei nützlicher Ordner</p>
              </div>
@@ -38,8 +38,8 @@
 
                 <div class="col-sm-7">
                     <input id="search" tabindex="1" placeholder="Studierendes suchen"/>
-					<input id="search-index-holder" data-bind="value:searched_student_id" style="display:none"></input>
-                    <input id="search-uniid-holder" data-bind="value:searched_student_uniid" style="display:none"></input>
+					<input id="search-index-holder" data-bind="value:searched_student_id" style="display:none"/>
+                    <input id="search-uniid-holder" data-bind="value:searched_student_uniid" style="display:none"/>
                 </div>
 
                 <div class="col-sm-5">
@@ -70,12 +70,12 @@
                         <option>DI1</option>
                       </optgroup>
                     </select>-->
-										<select id="folders" tabindex="2" name="" multiple data-live-search="true" data-width="100%" data-bind="selectPicker:folders,options:folders,selectedOptions:selected_folders,optionsText:'text',optionsValue:'id'">
+										<select id="folders" tabindex="2" name="folder" multiple data-live-search="true" data-width="100%" data-bind="selectPicker:folders,options:folders,selectedOptions:selected_folders,optionsText:'text',optionsValue:'id'">
 										</select>
                 </div>
 
                 <div class="col-sm-5">
-                    <input type="submit" id="lend" name="lend" tabindex="3" value="Ausleihen" class="btn btn-block btn-primary" data-bind="click:rent"  />
+                    <input type="submit" id="rent" name="lend" tabindex="3" value="Ausleihen" class="btn btn-block btn-primary" data-bind="click:rent"  />
                 </div>
 
              </div>
@@ -177,19 +177,19 @@
                             <div class="col-sm-6">
                               <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                <input id="name" type="text" class="form-control" data-bind="value:edited_student().name" name="name" placeholder="Name">
+                                <input id="name_edit" type="text" class="form-control" data-bind="value:edited_student().name" name="name" placeholder="Name">
                               </div>
                             </div>
                             <div class="col-sm-3">
                               <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-hd-video"></i></span>
-                                <input id="uniid" type="text" class="form-control" data-bind="value:edited_student().uniid" name="uniid" placeholder="Uni ID">
+                                <input id="uniid_edit" type="text" class="form-control" data-bind="value:edited_student().uniid" name="uniid" placeholder="Uni ID">
                               </div>
                             </div>
                             <div class="col-sm-3">
                               <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-sound-6-1"></i></span>
-                                <input id="matrikelnummer" type="text" data-bind="value:edited_student().matriculationnumber"
+                                <input id="matrikelnummer_edit" type="text" data-bind="value:edited_student().matriculationnumber"
                                 class="form-control" name="matrikelnummer"
                                 placeholder="Matrikelnummer" disabled>
                               </div>
