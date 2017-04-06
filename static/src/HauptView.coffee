@@ -44,11 +44,16 @@ define ['student','lent','folder','ajax'],(Student,Lent,Folder,ajax)->
       ajax("api/folder?results_per_page=1000&q="+JSON.stringify(orderObject),"GET").done((data)=>
         @folders.push new Folder i for i in data.objects)
       @rent =()=>
+        console.log i for i in @selected_folders()
         return alert "Kein Student ausgewählt" if not @student_selected()
         return alert "Student hat keine uniid" if not @student_selected_has_uniid()
-        ajax("api/lent","POST",(studentid:@searched_student_id(),folderid:i)).done((data)=>
-          @lent.push new Lent data) for i in @selected_folders()
-        @selected_folders([])
+        kostenpflichtig= false
+        kostenpflichtig |= i.obligation_to_report() for i in @selected_folders()
+        ajax("api/student/#{@searched_student_id()}").done((student)=>
+          return alert "Kostenpflichtiger Ordner bei Student ohne Berechtigung" if (not student.refund) and kostenpflichtig
+          ajax("api/lent","POST",(studentid:@searched_student_id(),folderid:i.id())).done((data)=>
+            @lent.push new Lent data) for i in @selected_folders()
+          @selected_folders([]))
       @restore=(data)=>
         console.log data
         #delete lent object
